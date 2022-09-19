@@ -1,21 +1,20 @@
 import React from 'react';
-import { CartState } from '../Context/Context';
 import ProductFilter from '../SingleProduct/ProductFilter';
 import SingleProduct from '../SingleProduct/SingleProduct';
 
-const Home = () => {
-    const {state:{products},
-    } =CartState();
-    console.log(products)
-
+const Home = ({products,handleClicked}) => {
+    
     return (
-        <div className='flex container mx-auto px-4'>
-            <div className="artboard phone-1 w-2/12">
+        <div className='flex container mx-auto px-4 gap-8' >
+            <div className="artboard phone-1 w-2/12 shadow-xl rounded-xl">
                 <ProductFilter></ProductFilter>
             </div>
-            <div className='grid grid-cols-3 gap-3 w-10/12 bg-dark'>
+            <div className='grid grid-cols-3 gap-5 w-10/12 bg-dark'>
                 {
-                    products.map(product => <SingleProduct product={product} />)
+                    products.map(product => <SingleProduct
+                        handleClicked={handleClicked}
+                        key={product.id} 
+                        product={product} />)
                 }
             </div>
         </div>

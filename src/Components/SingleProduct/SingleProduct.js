@@ -1,7 +1,7 @@
 import React from 'react';
 
-const SingleProduct = ({product}) => {
-    const {name, image, inStock}=product;
+const SingleProduct = ({product,handleClicked}) => {
+    const {name, image, price, inStock}=product;
     return (
         <div>
             <div class="card w-96 bg-base-100 shadow-xl">
@@ -9,10 +9,13 @@ const SingleProduct = ({product}) => {
                 <img src={image} alt="Shoes" class="rounded-xl" />
             </figure>
             <div class="card-body items-center text-center">
-                <h2 class="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <h2 class="card-title">{name}</h2>
+                <div className='flex justify-between gap-8'>
+                <p className='text-xl font-bold'>Price: ${price}</p>
+                <p>Instock: {inStock}</p>
+                </div>
                 <div class="card-actions">
-                <button class="btn btn-primary">Buy Now</button>
+                    <button onClick={()=> handleClicked(product)}>Add to cart</button>               
                 </div>
             </div>
             </div>
